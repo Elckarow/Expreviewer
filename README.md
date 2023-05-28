@@ -7,7 +7,7 @@ Simply place `expreviewer.rpy` somewhere in your game folder, launch the game, a
 
 You'll quickly notice a few things:
 
-* A list of tags in the top left corner (those are the tags that you've entered).
+* A list of tags in the top left corner (those are the tags that you've entered in `expreviewer.rpy`).
 * A `Use custom layer` button in the top right corner (we'll get to it later (later as in 2 lines)).
 * A UI stolen from the launcher (yes, totally).
 
