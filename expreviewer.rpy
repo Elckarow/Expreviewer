@@ -10,10 +10,7 @@ init python in expreviewer:
     # enter your image tags here
     # only works for layeredimages because fuck you
     tags = [
-        # "monika",
-        # "sayori",
-        # "yuri",
-        # "natsuki"
+        # "aika"
     ]
 
     characters = { }
