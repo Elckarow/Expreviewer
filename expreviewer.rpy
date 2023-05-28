@@ -2,6 +2,7 @@
 init python in expreviewer: 
     from renpy import store
     from store import config, layeredimage
+    from collections import OrderedDict
 
     layer = "expreviewer"
 
@@ -13,7 +14,7 @@ init python in expreviewer:
         # "aika"
     ]
 
-    characters = { }
+    layeredimages = { }
     # "monika": {"forward": [("outfits", [ ]), ("left", [ ]), ...], "lean": [(...)]}
     # tag: {rest: [(group name, attribute name list)], ...}
 
@@ -62,7 +63,7 @@ init python in expreviewer:
     _no_rest = "_expreviewer_no_rest"
 
     @config.start_callbacks.append
-    def __populate_characters():
+    def __populate_layeredimages():
         def get_rest_and_groups(tag):
             for name, image in renpy.display.image.images.items():
                 _tag, tag_rest = name[0], name[1:]
@@ -75,7 +76,7 @@ init python in expreviewer:
                 yield " ".join(tag_rest), [(group, [attr.attribute for attr in attributes]) for group, attributes in get_layeredimage_groups(l, True)]
 
         for tag in tags:
-            d = characters.setdefault(tag, { })
+            d = layeredimages.setdefault(tag, OrderedDict)
             for tag_rest, groups in get_rest_and_groups(tag):
                 d[tag_rest] = groups
         
@@ -132,7 +133,7 @@ transform _expreviewer:
 # this can be optimized but fuck off i aint going over that a 2nd time
 screen expreviewer():
     # consts
-    default exp_characters = expreviewer.characters
+    default layeredimages = expreviewer.layeredimages
     default _at_list = [_expreviewer]
     default _ui = True # except this :TardLilly:
     default _ui_trans_time = 0.3
@@ -212,7 +213,7 @@ screen expreviewer():
                         hbox:
                             box_wrap True box_wrap_spacing 10
                             spacing 15 xalign 0.5
-                            for tag_rest in exp_characters[tag_selected]:
+                            for tag_rest in layeredimages[tag_selected]:
                                 textbutton (tag_rest if tag_rest != expreviewer._no_rest else "NONE"):
                                     action (
                                         SelectedIf(tag_rest_selected == tag_rest),
@@ -238,7 +239,7 @@ screen expreviewer():
                             $ name = tag_selected + " " + (tag_rest_selected if tag_rest_selected != expreviewer._no_rest else "")
 
                             vbox spacing 25:
-                                for group, attributes in exp_characters[tag_selected][tag_rest_selected]:
+                                for group, attributes in layeredimages[tag_selected][tag_rest_selected]:
                                     $ is_group_scrolled = group in groups_scrolled
 
                                     vbox spacing 3:
