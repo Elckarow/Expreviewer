@@ -76,7 +76,7 @@ init python in expreviewer:
                 yield " ".join(tag_rest), [(group, [attr.attribute for attr in attributes]) for group, attributes in get_layeredimage_groups(l, True)]
 
         for tag in tags:
-            d = layeredimages.setdefault(tag, OrderedDict)
+            d = layeredimages.setdefault(tag, OrderedDict())
             for tag_rest, groups in get_rest_and_groups(tag):
                 d[tag_rest] = groups
         
