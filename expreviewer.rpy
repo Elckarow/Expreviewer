@@ -5,8 +5,7 @@ init python in expreviewer:
     from collections import OrderedDict
 
     layer = "expreviewer"
-
-    config.detached_layers.append(layer)
+    renpy.add_layer(layer, above="master")
 
     # enter your image tags here
     # only works for layeredimages because fuck you
@@ -129,6 +128,8 @@ transform _expreviewer:
     subpixel True zoom 0.8
     xalign 0.5 yanchor 1.0 ypos 1.03
 
+image _expreviewer_white = "#fdfdfd"
+
 # my brain hurts
 # this can be optimized but fuck off i aint going over that a 2nd time
 screen expreviewer():
@@ -151,14 +152,7 @@ screen expreviewer():
 
     $ layer_to_use = ("master" if not use_custom_layer else expreviewer.layer)
     $ showing_tags = renpy.get_showing_tags(layer_to_use) 
-
-    if use_custom_layer:
-        add "#fdfdfd"
-    else:
-        add "#000"
     
-    add Layer(layer_to_use)
-
     style_prefix "expreviewer"
 
     showif _ui:
@@ -178,11 +172,11 @@ screen expreviewer():
                     xfill True ysize 0.6
                     mousewheel True draggable True
 
-                    if not exp_characters:
+                    if not layeredimages:
                         text "No layeredimages have been stored :("
                     else:
                         vbox spacing 10:
-                            for tag in exp_characters:
+                            for tag in layeredimages:
                                 textbutton tag action (
                                     If(last_tag_selected != tag,
                                         true=(
@@ -221,7 +215,7 @@ screen expreviewer():
                                         Function(groups_scrolled.clear),
                                         If(
                                             use_custom_layer and not tag_selected_is_showing,
-                                            true=Function(renpy.scene, layer_to_use)
+                                            true=(Function(renpy.scene, expreviewer.layer), Function(renpy.show, "_expreviewer_white", layer=expreviewer.layer))
                                         ),
                                         Function(
                                             renpy.show,
@@ -295,7 +289,12 @@ screen expreviewer():
                     SetScreenVariable("last_tag_selected", None),
                     SetScreenVariable("tag_selected", None),
                     SetScreenVariable("tag_rest_selected", None),
-                    Function(groups_scrolled.clear)
+                    Function(groups_scrolled.clear),
+                    If(
+                        not use_custom_layer,
+                        true=(Function(renpy.show, "_expreviewer_white", layer=expreviewer.layer), Function(renpy.show_layer_at, layer=expreviewer.layer, at_list=[Transform(alpha=1.0)])),
+                        false=Function(renpy.show_layer_at, layer=expreviewer.layer, at_list=[Transform(alpha=0.0)])
+                    )
                 )
             
             python:
