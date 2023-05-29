@@ -1,9 +1,10 @@
 # Expreviewer
-A Ren'Py 7.6/8.1+ tool that allows the user to see how their `LayeredImage`s look like.
+A Ren'Py 7.0+ (haven't tested each version) tool that allows the user to see how their `LayeredImage`s look like.
 
 Simply place `expreviewer.rpy` somewhere in your game folder, launch the game, and press `shift + E`.
 
-![screenshot0007](https://github.com/Elckarow/Expreviewer/assets/101005497/1f3730ef-3db2-4eb6-848a-bff0b3e9a260)
+![image](https://github.com/Elckarow/Expreviewer/assets/101005497/bbc9ca50-685a-4d5d-aeeb-7ebfdf2a39c2)
+
 
 You'll quickly notice a few things:
 
@@ -15,23 +16,23 @@ The `amelia` button can't be clicked. That's because the tag isn't currently sho
 
 Let's click on `aika`, shall we?
 
-![screenshot0008](https://github.com/Elckarow/Expreviewer/assets/101005497/9c11ebef-30e6-4013-b6c9-0fb8330f031a)
+![image](https://github.com/Elckarow/Expreviewer/assets/101005497/ed18de8f-2987-4764-9344-977a4ac2f3d1)
 
 Those two buttons, `turned` and `smug` are different `LayeredImage`s defined with the same tag.
 
-![image](https://github.com/Elckarow/Expreviewer/assets/101005497/2abf2e07-ab3e-42e6-afd8-37a9ab5813f0)
+![image](https://github.com/Elckarow/Expreviewer/assets/101005497/567913fb-69f7-49dd-b754-d9ee0a72090b)
 
 If a `LayeredImage` has been defined without anything else,
 
-![image](https://github.com/Elckarow/Expreviewer/assets/101005497/2b06d848-f3a0-44b2-866f-c7f8d5ba0d39)
+![image](https://github.com/Elckarow/Expreviewer/assets/101005497/0c4c18c5-9f0a-4a2c-975a-685436f1a257)
 
 a special value is used (internally) and `NONE` is displayed.
 
-![image](https://github.com/Elckarow/Expreviewer/assets/101005497/31ecf44e-0543-44a5-b50b-6028a2cee432)
+![image](https://github.com/Elckarow/Expreviewer/assets/101005497/f5606709-b423-48fa-8313-3b2febdde2fc)
 
 If we click on `turned`,
 
-![screenshot0010](https://github.com/Elckarow/Expreviewer/assets/101005497/bd70e60b-d22b-4c33-b953-d4f8f6218609)
+![image](https://github.com/Elckarow/Expreviewer/assets/101005497/ed58c6d6-3d58-44aa-b36f-4794d3ef16ff)
 
 we can see a bunch of stuff.
 
@@ -40,17 +41,17 @@ we can see a bunch of stuff.
 
 Let's change some expressions. I want to close her mouth and put her ~~kid named~~ finger down:
 
-![screenshot0011](https://github.com/Elckarow/Expreviewer/assets/101005497/5d2e1de5-04de-4ce4-a8e6-bd2469e37db2)
+![image](https://github.com/Elckarow/Expreviewer/assets/101005497/11dd7b18-800c-4d68-a91b-dd4d49729807)
 
 Pretty pog if i do say so myself.
 And since a new context is created when calling the screen, leaving `expreviewer` will turn everything back to normal.
 
-![screenshot0012](https://github.com/Elckarow/Expreviewer/assets/101005497/8b5e57b9-c3bd-4b7c-a1d1-c37bba33b946)
+![image](https://github.com/Elckarow/Expreviewer/assets/101005497/dcd5bf6d-a5c6-45d6-8303-df286c7c584f)
 
 **_Credit Elckarow#8399 or i will haunt you_**
 
 oh and here's what amelia looks like btw
-![screenshot0013](https://github.com/Elckarow/Expreviewer/assets/101005497/354b6a1c-61f8-46a2-8984-8583c792f6fd)
 
-both Amelia and Aika are from a DDLC Mod called `Doki Doki Undercurrents` and yours truly is part of the dev team (go play it https://undercurrentsmod.weebly.com/).
-\#selfplug
+![image](https://github.com/Elckarow/Expreviewer/assets/101005497/d86e38e9-8700-411e-b60a-b0148c69c85a)
+
+both Amelia and Aika are from a DDLC Mod called `Doki Doki Undercurrents` and yours truly is part of the dev team (go play it https://undercurrentsmod.weebly.com/). \#selfplug
