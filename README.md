@@ -1,5 +1,5 @@
 # Expreviewer
-A Ren'Py 7.0+ (haven't tested each version) tool that allows the user to see how their `LayeredImage`s look like.
+A Ren'Py 7.4.5+ (haven't tested each version) tool that allows the user to see how their `LayeredImage`s look like.
 
 Simply place `expreviewer.rpy` somewhere in your game folder, launch the game, and press `shift + E`.
 
