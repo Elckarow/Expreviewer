@@ -33,8 +33,8 @@ init python in expreviewer:
         last_group = None
 
         rv = [ ]
-        attr_names = set() 
-        # might have a lot of attributes
+        seen = set() 
+        # might have a lot of attributes / groups
         # so we use a set
 
         if isinstance(l, basestring): l = get_layeredimage(tuple(l.split()))
@@ -43,19 +43,23 @@ init python in expreviewer:
         for attr in l.attributes:
             if not isinstance(attr, layeredimage.Attribute): continue
 
-            if not attributes:
-                if attr.group != last_group:
-                    last_group = attr.group
-                    rv.append(attr.group)
-            else:
-                if attr.group != last_group:
-                    last_group = attr.group    
-                    rv.append((attr.group, [ ]))
+            raw_group = attr.group
+            group = raw_group or attr.attribute
 
-                current_attributes = rv[-1][1]
-                if attr.attribute in attr_names: continue
-                attr_names.add(attr.attribute)
-                current_attributes.append(attr)
+            if not attributes:
+                if group != last_group:
+                    last_group = raw_group
+                    if group in seen: continue
+                    seen.add(group)
+                    rv.append(group)
+            else:
+                if group != last_group:
+                    last_group = raw_group    
+                    rv.append((group, [ ]))
+
+                if attr.attribute in seen: continue
+                seen.add(attr.attribute)
+                rv[-1][1].append(attr)
 
         return rv
 
